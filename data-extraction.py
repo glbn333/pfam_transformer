@@ -35,9 +35,9 @@ with open(seed_file, "r", encoding="utf-8") as file:
         if sequence_count_match:
             nb_sequences = int(sequence_count_match.group(1))
             
-            if nb_sequences>900:
+            if nb_sequences>1:
                 list_of_fams.append(current_family)
-                print(current_family, nb_sequences)
+                #print(current_family, nb_sequences)
 
         if current_family in list_of_fams:
             sequence_match = pattern.match(line)
@@ -50,6 +50,8 @@ with open(seed_file, "r", encoding="utf-8") as file:
 print(f"Kept {sum(len(sequences) for sequences in family_sequences.values())} sequences in {len(family_sequences)} families")
 
 # Save the filtered families to a CSV file
+
+'''
 output_file = r"C:/Users/gagou/Desktop/Data science and info/lebrun/pfam_transformer_project/filtered_families.csv"
 
 with open(output_file, "w", newline="", encoding="utf-8") as csvfile:
@@ -59,3 +61,4 @@ with open(output_file, "w", newline="", encoding="utf-8") as csvfile:
         for sequence in sequences:
             writer.writerow([sequence, family])
 
+'''
