@@ -1,6 +1,6 @@
 # Pfam Classification using a Transformer and Protein Sequences
 
-This project aims to classify protein sequences into their respective Pfam families using a Transformer model. The project consists of several steps, including data preprocessing, model architecture, training, and evaluation. I wanted to perform this project after reading an article of Nambiar et al. of 2020 called "Transforming the Language of Life: Transformer Neural Networks for Protein Prediction Tasks" and a M2 report by Aliouane and Bendahmane named "Nouvelle approche de prédiction des classes protéiques issues d’un séquençage NGS par Deep Learning".
+This project aims to classify protein sequences into their respective Pfam families using a Transformer model. The project consists of several steps, including data preprocessing, model architecture, training, and evaluation. I wanted to perform this project after reading an article of Nambiar et al. (2020) called "Transforming the Language of Life: Transformer Neural Networks for Protein Prediction Tasks" and a M2 report by Aliouane and Bendahmane named "Nouvelle approche de prédiction des classes protéiques issues d’un séquençage NGS par Deep Learning".
 
 I wanted to perform this project using my own database hence I downloaded a dataset from InterPro. This dataset contained multiple sequence alignments of a significant amount of protein domains.
 
@@ -16,7 +16,10 @@ The file is Pfam-A Seed alignment : "Pfam-A.seed.gz"
 
 ## Data Extraction and Preprocessing
 
-The data preprocessing step involves loading the data from the `Pfam-A.seed.gz` file. Using REGEX, I identified the families containing more than 900 sequences. I extracted them to a CSV file. All of this was done in the `data-extraction.py` file.
+The data preprocessing step involves loading the data from the `Pfam-A.seed.gz` file.
+Using REGEX, I identified that :
+* This file contained 1,198,004 sequences among 19996 families.
+* 36 families contained more than 900 sequences. I extracted them to a CSV file. All of this was done in the `data-extraction.py` file.
 
 I plotted a countplot of the different families in the following figure. Each x-label corresponds to one category.
 ![Number of sequences per category](family_distribution.png)
@@ -24,6 +27,10 @@ I plotted a countplot of the different families in the following figure. Each x-
 We can observe that at some point the condition to extract the wanted families failed as we can see 4 families with less than 900 sequences. We will remove them from the dataset afterwards.
 
 ## Tokenization of our sequences
+
+I then want to identify the frequent amino acids combination among the sequences. Those combinations can be seen as words forming a sentence (the sequence).
+This identification is done by tokenizing our sequences.
+I chose to use the SentencePiece Python library
 
 ## Model Architecture
 
