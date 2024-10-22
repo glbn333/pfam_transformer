@@ -49,7 +49,6 @@ with open(seed_file, "r", encoding="utf-8") as file:
 
 print(f"Kept {sum(len(sequences) for sequences in family_sequences.values())} sequences in {len(family_sequences)} families")
 
-
 # Save the filtered families to a CSV file
 output_file = r"C:/Users/gagou/Desktop/Data science and info/lebrun/pfam_transformer_project/filtered_families.csv"
 
@@ -60,26 +59,3 @@ with open(output_file, "w", newline="", encoding="utf-8") as csvfile:
         for sequence in sequences:
             writer.writerow([sequence, family])
 
-
-'''
-            if sequence_count_match:
-                sequence_count = int(sequence_count_match.group(1))
-
-        # If this line contains a sequence, add it to the current family
-        if line.startswith(">"):
-            sequence = line[1:].strip()
-            family_sequences[current_family].append(sequence)
-
-# Filter the families to keep only those with more than 900 sequences
-filtered_families = {family: sequences for family, sequences in family_sequences.items() if len(sequences) > 900}
-
-# Print the number of sequences and families kept
-print(f"Kept {sum(len(sequences) for sequences in filtered_families.values())} sequences in {len(filtered_families)} families")
-
-# Save the filtered families to a CSV file
-with open("filtered_families.csv", "w", newline="", encoding="utf-8") as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(["sequence", "family"])
-    for family, sequences in filtered_families.items():
-        for sequence in sequences:
-            writer.writerow([sequence, family])'''
