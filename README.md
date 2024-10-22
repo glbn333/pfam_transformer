@@ -21,6 +21,10 @@ The data preprocessing step involves loading the data from the `Pfam-A.seed.gz` 
 I plotted a countplot of the different families in the following figure. Each x-label corresponds to one category.
 ![Number of sequences per category](family_distribution.png)
 
+We can observe that at some point the condition to extract the wanted families failed as we can see 4 families with less than 900 sequences. We will remove them from the dataset afterwards.
+
+## Tokenization of our sequences
+
 ## Model Architecture
 
 The model architecture consists of a Transformer model with the following components:
