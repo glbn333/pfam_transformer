@@ -1,5 +1,6 @@
 import tensorflow as tf
-from tensorflow.keras import layers
+from keras import layers
+import keras
 
 # Define a custom layer for a single Transformer block
 class TransformerBlock(layers.Layer):
@@ -8,7 +9,7 @@ class TransformerBlock(layers.Layer):
         # Multi-head attention layer
         self.att = layers.MultiHeadAttention(num_heads=num_heads, key_dim=embed_dim)
         # Feed-forward network
-        self.ffn = tf.keras.Sequential(
+        self.ffn = keras.Sequential(
             [layers.Dense(ff_dim, activation="relu"), layers.Dense(embed_dim),]
         )
         # Layer normalization layers
@@ -64,5 +65,5 @@ def create_model(vocab_size, maxlen, embed_dim, num_heads, ff_dim, num_layers, n
     # Output layer
     outputs = layers.Dense(num_classes, activation="softmax")(x)
     # Create the model
-    model = tf.keras.Model(inputs=inputs, outputs=outputs)
+    model = keras.Model(inputs=inputs, outputs=outputs)
     return model
