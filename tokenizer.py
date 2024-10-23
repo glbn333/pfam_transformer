@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import sentencepiece as spm
 
 # Load the CSV file
