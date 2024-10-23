@@ -24,13 +24,19 @@ Using REGEX, I identified that :
 I plotted a countplot of the different families in the following figure. Each x-label corresponds to one category.
 ![Number of sequences per category](family_distribution.png)
 
-We can observe that at some point the condition to extract the wanted families failed as we can see 4 families with less than 900 sequences. We will remove them from the dataset afterwards.
+We can observe that at some point the condition to extract the wanted families failed as we can see 4 families with less than 900 sequences.
+After preprocessing of those families, here is the final distribution.
+![Number of sequences per category](family_distribution_preprocessed.png)
 
 ## Tokenization of our sequences
 
 I then want to identify the frequent amino acids combination among the sequences. Those combinations can be seen as words forming a sentence (the sequence).
 This identification is done by tokenizing our sequences.
 I chose to use the SentencePiece Python library
+
+All sequences in the `filtered_families.csv` file were processed to remove the '.' characters corresponding to the different indels between sequences.
+They were then collected together in the `sequences.txt` file which allowed me to train the tokenizer model. It recognized the 5000 most frequent 'subwords' among sequences.
+The trained model and its vocabulary are respectively saved in the `amino_acids.model` and the `amino_acids.vocab` files.
 
 ## Model Architecture
 
@@ -57,10 +63,13 @@ The evaluation step involves evaluating the performance of the trained model on 
 To use this project, you will need to install the following dependencies:
 
 * TensorFlow
+* Keras
 * NumPy
 * Pandas
 * Seaborn
 * Scikit-learn
+* SentencePiece
+
 
 The filtered CSV file is already uploaded to the repository. You can either directly use it or download the original dataset and perform the extraction using `data-extraction.py`. You will have to manually modify the path of your file.
 
