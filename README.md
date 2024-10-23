@@ -42,9 +42,10 @@ Here is an example of the tokenization of the following test sequence:
 
 >sequence_test = 'MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHQYREQIKRVKDSDDVPMVLVGNKCDLAARTVESRQAQDLARSYGIPYIETSAKTRQGVEDAFYTLVREIRQHKLRKLNPPDESGPGCMNCKCVIS'
 
-``tokens = sp.EncodeAsPieces(sequence_test)
-print(tokens)
- `['▁M', 'T', 'EY', 'KL', 'VV', 'VGA', 'GG', 'VG', 'K', 'SAL', 'TI', 'QL', 'IQN', 'HF', 'VDE', 'YD', 'PT', 'IED', 'S', 'YRK', 'QVV', 'ID', 'GET', 'CL', 'LDI', 'LDTA', 'GQ', 'EEY', 'SA', 'MRD', 'QY', 'MR', 'TG', 'EGF', 'LC', 'VFA', 'IN', 'NT', 'KSF', 'EDI', 'HQ', 'YR', 'EQI', 'KRV', 'KD', 'SD', 'DVP', 'MV', 'LVG', 'NK', 'CD', 'LAA', 'RT', 'VES', 'RQ', 'AQ', 'DLA', 'RSY', 'GIP', 'YIE', 'TS', 'AK', 'TR', 'QG', 'VED', 'A', 'FY', 'TLV', 'REIR', 'Q', 'HKL', 'RK', 'LNP', 'PDE', 'S', 'GPG', 'CM', 'NC', 'KC', 'VIS']` ``
+``tokens = sp.EncodeAsPieces(sequence_test)``
+``print(tokens)``
+
+ `['▁M', 'T', 'EY', 'KL', 'VV', 'VGA', 'GG', 'VG', 'K', 'SAL', 'TI', 'QL', 'IQN', 'HF', 'VDE', 'YD', 'PT', 'IED', 'S', 'YRK', 'QVV', 'ID', 'GET', 'CL', 'LDI', 'LDTA', 'GQ', 'EEY', 'SA', 'MRD', 'QY', 'MR', 'TG', 'EGF', 'LC', 'VFA', 'IN', 'NT', 'KSF', 'EDI', 'HQ', 'YR', 'EQI', 'KRV', 'KD', 'SD', 'DVP', 'MV', 'LVG', 'NK', 'CD', 'LAA', 'RT', 'VES', 'RQ', 'AQ', 'DLA', 'RSY', 'GIP', 'YIE', 'TS', 'AK', 'TR', 'QG', 'VED', 'A', 'FY', 'TLV', 'REIR', 'Q', 'HKL', 'RK', 'LNP', 'PDE', 'S', 'GPG', 'CM', 'NC', 'KC', 'VIS']`
  
 ## Model Architecture
 
