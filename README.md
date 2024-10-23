@@ -38,6 +38,14 @@ All sequences in the `filtered_families.csv` file were processed to remove the '
 They were then collected together in the `sequences.txt` file which allowed me to train the tokenizer model. It recognized the 5000 most frequent 'subwords' among sequences.
 The trained model and its vocabulary are respectively saved in the `amino_acids.model` and the `amino_acids.vocab` files.
 
+Here is an example of the tokenization of the following test sequence:
+
+>sequence_test = 'MTEYKLVVVGAGGVGKSALTIQLIQNHFVDEYDPTIEDSYRKQVVIDGETCLLDILDTAGQEEYSAMRDQYMRTGEGFLCVFAINNTKSFEDIHQYREQIKRVKDSDDVPMVLVGNKCDLAARTVESRQAQDLARSYGIPYIETSAKTRQGVEDAFYTLVREIRQHKLRKLNPPDESGPGCMNCKCVIS'
+
+``tokens = sp.EncodeAsPieces(sequence_test)
+print(tokens)
+ `['▁M', 'T', 'EY', 'KL', 'VV', 'VGA', 'GG', 'VG', 'K', 'SAL', 'TI', 'QL', 'IQN', 'HF', 'VDE', 'YD', 'PT', 'IED', 'S', 'YRK', 'QVV', 'ID', 'GET', 'CL', 'LDI', 'LDTA', 'GQ', 'EEY', 'SA', 'MRD', 'QY', 'MR', 'TG', 'EGF', 'LC', 'VFA', 'IN', 'NT', 'KSF', 'EDI', 'HQ', 'YR', 'EQI', 'KRV', 'KD', 'SD', 'DVP', 'MV', 'LVG', 'NK', 'CD', 'LAA', 'RT', 'VES', 'RQ', 'AQ', 'DLA', 'RSY', 'GIP', 'YIE', 'TS', 'AK', 'TR', 'QG', 'VED', 'A', 'FY', 'TLV', 'REIR', 'Q', 'HKL', 'RK', 'LNP', 'PDE', 'S', 'GPG', 'CM', 'NC', 'KC', 'VIS']` ``
+ 
 ## Model Architecture
 
 The model architecture consists of a Transformer model with the following components:
