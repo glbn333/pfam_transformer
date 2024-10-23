@@ -16,5 +16,10 @@ data = pd.read_csv(input_file)
 # Remove the '.' characters from each sequence
 data["sequence"] = data["sequence"].str.replace(".", "")
 
+# Remove the families with less than 900 sequences
+family_counts = data["family"].value_counts()
+selected_families = family_counts[family_counts >= 900].index
+data = data[data["family"].isin(selected_families)]
+
 # Save the preprocessed sequences to a new file
 data.to_csv(output_file, index=False)
