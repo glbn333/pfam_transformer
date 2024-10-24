@@ -1,3 +1,74 @@
+# Define the model parameters
+from sentencepiece import SentencePieceProcessor
+from model_architecture import create_model
+
+
+# Load the trained SentencePiece tokenizer
+sp = SentencePieceProcessor()
+sp.Load('amino_acids.model')
+
+# Get the vocabulary size
+vocab_size = sp.GetPieceSize()
+
+# Maximum sequence length
+maxlen = 128
+
+# Embedding dimension
+
+embed_dim = 64
+
+# Number of attention heads
+num_heads = 8
+
+# Feed-forward dimension
+ff_dim = 64*4
+
+# Number of Transformer blocks
+num_layers = 4
+
+# Number of output classes
+num_classes = 32
+
+# Create the Transformer model
+model = create_model(vocab_size, maxlen, embed_dim, num_heads, ff_dim, num_layers, num_classes)
+
+
+
+
+# Display the model summary
+model.summary()
+#Output :
+#Model: "model"
+#_________________________________________________________________
+#Layer (type)                 Output Shape              Param #
+#=================================================================
+#input_1 (InputLayer)         [(None, 128)]             0
+#_________________________________________________________________
+#token_and_position_embedding (None, 128, 64)           332800
+#_________________________________________________________________
+#transformer_block (Transforme (None, 128, 64)           66048
+#_________________________________________________________________
+#transformer_block_1 (Transfor (None, 128, 64)           66048
+#_________________________________________________________________
+#transformer_block_2 (Transfor (None, 128, 64)           66048
+#_________________________________________________________________
+#transformer_block_3 (Transfor (None, 128, 64)           66048
+#_________________________________________________________________
+#global_average_pooling1d (Glo (None, 64)                0
+#_________________________________________________________________
+#dense (Dense)                (None, 32)                2080
+#=================================================================
+#Total params: 597,072
+#Trainable params: 597,072
+#Non-trainable params: 0
+#_________________________________________________________________
+
+# Save the model architecture to a file
+model.save("transformer_model.keras")
+
+
+'''
+
 import pandas as pd
 import numpy as np
 import tensorflow as tf
@@ -51,4 +122,4 @@ model.compile(loss="sparse_categorical_crossentropy", optimizer=tf.keras.optimiz
 model.fit(X_train, y_train, batch_size=batch_size, epochs=num_epochs, validation_data=(X_val, y_val))
 
 # Save the trained model
-model.save("pfam_transformer.h5")
+model.save("pfam_transformer.h5")'''
