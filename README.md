@@ -61,6 +61,7 @@ The model is implemented using TensorFlow and the Keras API.
 
 The model architecture corresponds to this table:
 
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 ┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ input_layer (InputLayer)             │ (None, 128)                 │               0 │
