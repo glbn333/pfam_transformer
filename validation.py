@@ -1,14 +1,38 @@
 import tensorflow as tf
 from tensorflow import keras
+from sentencepiece import SentencePieceProcessor
 from keras import layers
 import numpy as np
 import pandas as pd
-from model_architecture import TransformerBlock, TokenAndPositionEmbedding
+from model_architecture import create_model
 
+# Load the trained SentencePiece tokenizer
+sp = SentencePieceProcessor()
+sp.Load('amino_acids.model')
 
-model = keras.models.load_model(
-    "pfam_transformer_trained_5epochs.keras",
-)
+# Get the vocabulary size
+vocab_size = sp.GetPieceSize()
+
+# Maximum sequence length
+maxlen = 128
+
+# Embedding dimension
+
+embed_dim = 64
+
+# Number of attention heads
+num_heads = 8
+
+# Feed-forward dimension
+ff_dim = 64*4
+
+# Number of Transformer blocks
+num_layers = 4
+
+# Number of output classes
+num_classes = 32
+
+model = create_model(vocab_size, maxlen, embed_dim, num_heads, ff_dim, num_layers, num_classes) 
 
 df = pd.read_csv('preprocessed_sequences_encoded.csv')
 
@@ -24,10 +48,16 @@ for seq in X:
 # Pad the sequences
 X_padded = tf.keras.preprocessing.sequence.pad_sequences(X_tokenized, maxlen=128, padding='post')
 
-# Evaluate the model on the test data
-loss, accuracy = model.evaluate(X_padded, y)
+model.load_weights('training/pfam_transformer_trained_5epochs.weights.h5')
 
-print(f"Test accuracy: {accuracy:.2f}")
+learning_rate = 1e-4  # Learning rate for the optimizer
+# Compile the model
+model.compile(loss="sparse_categorical_crossentropy", optimizer=tf.keras.optimizers.Adam(learning_rate), metrics=["accuracy"])
+
+# Evaluate the model on the test data
+# loss, accuracy = model.evaluate(X_padded, y)
+
+# print(f"Test accuracy: {accuracy:.2f}")
 
 # Predict the class labels for the test data
 y_pred = model.predict(X_padded)
@@ -38,6 +68,9 @@ confusion_matrix = tf.math.confusion_matrix(y, y_pred_classes)
 
 print("Confusion Matrix:")
 print(confusion_matrix)
+
+#Family dict : df['encoded'] : df['family']
+family_dict = dict(zip(df['encoded_family'], df['family']))
 
 # Calculate the classification report
 from sklearn.metrics import classification_report
