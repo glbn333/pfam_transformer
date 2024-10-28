@@ -102,7 +102,8 @@ An empty model is pre-initialized and then loads the trained weights.
 The evaluation step involves evaluating the performance of the trained model on the validation set and reporting the accuracy and loss metrics.
 
 
-Classification Report:
+# Classification Report:
+
 ```
                                                                       precision    recall  f1-score   support
 
