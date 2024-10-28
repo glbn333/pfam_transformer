@@ -64,26 +64,14 @@ The model architecture corresponds to this table:
 
 | Layer (type) | Output Shape | Param # |
 | ---: | ----: | ---: |
-│ input_layer (InputLayer)             │ (None, 128)                 │               0 │
-
-│ token_and_position_embedding         │ (None, 128, 64)             │         328,192 │
-│ (TokenAndPositionEmbedding)          │                             │                 │
-
-│ transformer_block (TransformerBlock) │ (None, 128, 64)             │         166,016 │
-
-│ transformer_block_1                  │ (None, 128, 64)             │         166,016 │
-│ (TransformerBlock)                   │                             │                 │
-
-│ transformer_block_2                  │ (None, 128, 64)             │         166,016 │
-│ (TransformerBlock)                   │                             │                 │
-
-│ transformer_block_3                  │ (None, 128, 64)             │         166,016 │
-│ (TransformerBlock)                   │                             │                 │
-
-│ global_average_pooling1d             │ (None, 64)                  │               0 │
-│ (GlobalAveragePooling1D)             │                             │                 │
-
-│ dense_8 (Dense)                      │ (None, 32)                  │           2,080 │
+│ input_layer (InputLayer) │ (None, 128) │ 0 │
+│ token_and_position_embedding │ (None, 128, 64) │ 328,192 │
+│ transformer_block (TransformerBlock) │ (None, 128, 64) │ 166,016 │
+│ transformer_block_1 (TransformerBlock) │ (None, 128, 64) │ 166,016 │
+│ transformer_block_2 (TransformerBlock) │ (None, 128, 64) │ 166,016 │
+│ transformer_block_3 (TransformerBlock) │ (None, 128, 64) │ 166,016 │
+│ global_average_pooling1d │ (None, 64) │ 0 │
+│ dense_8 (Dense) │ (None, 32) │ 2,080 │
 
  Total params: 994,336 (3.79 MB)
  Trainable params: 994,336 (3.79 MB)
