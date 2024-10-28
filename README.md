@@ -102,6 +102,7 @@ The evaluation step involves evaluating the performance of the trained model on 
 
 
 Classification Report:
+```
                                                                       precision    recall  f1-score   support
 
                                      Acetyltransferase (GNAT) domain       1.00      1.00      1.00      1196
@@ -136,12 +137,15 @@ Aspartate/ornithine carbamoyltransferase, carbamoyl-P binding domain       1.00 
                  Terpene synthase family 2, C-terminal metal binding       1.00      1.00      1.00      1021
      Tetrahydrofolate dehydrogenase/cyclohydrolase, catalytic domain       0.99      0.95      0.97      1502
                                             WD domain, G-beta repeat       0.97      0.99      0.98       910
-
+                                            
                                                             accuracy                           0.99     42238
                                                            macro avg       0.99      0.99      0.99     42238
                                                         weighted avg       0.99      0.99      0.99     42238
+```
+
 
 Here is a draft of the confusion matrix: (I am working on it to be more clear)
+
 ![Confusion matrix](confusion_matrix.png)
 
 ## Usage
